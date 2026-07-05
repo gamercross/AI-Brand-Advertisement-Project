@@ -41,7 +41,7 @@
 - [🔄 Chapter 8. Prompt Refinement](#-chapter-8-prompt-refinement)
 - [🎥 Chapter 9. Final Advertisement](#-chapter-9-final-advertisement)
 - [📚 Chapter 10. Lessons Learned & Retrospective](#-chapter-10-lessons-learned--retrospective)
-
+- [ 추가 및 수정](#-수정-파트)
 ---
 
 <br>
