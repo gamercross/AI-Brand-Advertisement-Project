@@ -1735,6 +1735,138 @@ Scene마다 생성 결과의 분위기가 달라지는 문제가 발생했습니
 앞으로도 다양한 생성형 AI 도구를 활용하여 더 높은 완성도의 멀티모달 콘텐츠를 제작하고, AI를 효과적으로 활용할 수 있는 프롬프트 엔지니어링 역량을 지속적으로 발전시켜 나갈 계획입니다.
 
 ---
+# 수정 파트
+---
+## 📎 Appendix. Production Standards & Technical Decisions
+
+> **"이 프로젝트는 단순 생성이 아니라, 재현 가능한 제작 시스템을 목표로 설계되었습니다."**
+
+본 프로젝트에서는 AI 생성 결과물을 단순히 제작하는 것이 아니라, 이후에도 재사용 및 확장이 가능한 형태로 관리하기 위해 **제작 규칙과 기술적 기준**을 별도로 정의하였습니다.
+
+---
+
+# 📁 1. Asset Naming Convention
+
+모든 생성 결과물은 다음과 같은 규칙으로 관리하였습니다.
+
+```text
+scene{번호}_{type}_{version}.ext
+```
+
+### Example
+
+- scene01_image_v1.png
+- scene01_video_v1.mp4
+- scene02_audio_v1.wav
+
+### Purpose
+
+- 파일 재사용성 확보
+- Scene 단위 관리 용이
+- 버전 비교 및 프롬프트 개선 추적 가능
+
+---
+
+# 🎨 2. Text-to-Image vs Image-to-Video Strategy
+
+본 프로젝트에서는 다음 기준으로 생성 방식을 분리하여 사용했습니다.
+
+| 방식 | 사용 목적 | 선택 이유 |
+|------|----------|-----------|
+| Text-to-Image | Key Visual 제작 | 광고 콘셉트를 가장 정확하게 반영 가능 |
+| Image-to-Video | 모션 생성 | 일관된 스타일 유지 및 비용 절감 |
+
+### Decision Principle
+
+- 초기 콘셉트 정의 → Text-to-Image 사용
+- 최종 광고 컷 → Image-to-Video 사용
+- 불필요한 변형 최소화 전략 적용
+
+---
+
+# ⚖️ 3. Tool Selection Criteria
+
+도구 선택은 다음 4가지 기준으로 평가하여 결정했습니다.
+
+| 기준 | 설명 | 우선순위 |
+|------|------|----------|
+| 🎨 Quality | 광고 퀄리티 수준 | 1순위 |
+| 🎯 Control | 프롬프트 제어 가능성 | 2순위 |
+| ⚡ Speed | 생성 속도 | 3순위 |
+| 💰 Cost | 크레딧/비용 효율 | 4순위 |
+
+### Conclusion
+
+- 광고 프로젝트 특성상 **Quality + Control**이 가장 중요
+- Speed와 Cost는 보조 요소로 고려
+
+---
+
+# 🎭 4. Style & Character Consistency Strategy
+
+광고 전체에서 시각적 일관성을 유지하기 위해 다음 방법을 사용했습니다.
+
+### 1) Prompt Locking
+
+모든 Scene에서 동일한 핵심 키워드를 고정 사용:
+
+- cinematic lighting  
+- commercial advertising style  
+- minimal composition  
+- ultra realistic  
+- soft natural tone  
+
+---
+
+### 2) Style Anchoring
+
+각 Scene에서 스타일이 흔들리지 않도록 동일한 표현 구조 유지:
+
+```text
+Subject → Environment → Lighting → Camera → Style → Quality
+```
+
+---
+
+### 3) Reference Consistency (Pseudo Control)
+
+- 동일한 제품 설명 유지
+- 동일한 색감 키워드 반복 사용
+- Scene 간 분위기 연결 유지
+
+---
+
+# 🔒 5. Data Source Policy
+
+본 프로젝트의 모든 시각 및 음향 자료는 다음 원칙을 따릅니다.
+
+- ✔ 모든 이미지: AI 생성 (Midjourney)
+- ✔ 모든 영상: AI 생성 기반 변환 (Runway)
+- ✔ 모든 오디오: AI 생성 (Suno / ElevenLabs)
+- ❌ 실제 촬영 영상 사용하지 않음
+- ❌ 유료 스톡 이미지 사용하지 않음
+
+---
+
+# 💡 Key Impact
+
+이러한 기준을 통해 다음과 같은 효과를 얻을 수 있었습니다.
+
+- 광고 전체 스타일 일관성 유지
+- Scene 간 품질 편차 최소화
+- 재생성 비용 감소
+- 프롬프트 개선 추적 가능
+- 재현 가능한 제작 구조 확보
+
+---
+
+## ✅ Appendix Summary
+
+이번 프로젝트는 단순 결과물이 아니라, **재현 가능한 AI 기반 광고 제작 시스템을 설계하는 것**을 목표로 하였습니다.
+
+이를 위해 파일 관리 규칙, 생성 방식 기준, 도구 선택 기준, 스타일 일관성 전략을 정의하였으며, 이를 통해 전체 제작 파이프라인의 안정성과 확장성을 확보할 수 있었습니다.
+
+---
 
 <div align="center">
 
